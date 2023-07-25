@@ -19,7 +19,7 @@ git clone https://github.com/UPS-API/java-api-examples.git
 - Build the project using Maven
 ```sh
 cd <project home>
-mvn clean package
+mvn package
 ```
 
 - Run the project that is generated in the <project home>/target directory.
