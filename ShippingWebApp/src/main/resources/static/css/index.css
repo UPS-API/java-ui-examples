@@ -1,0 +1,65 @@
+
+html {
+  height: 100%;
+}
+
+body {
+  background-color: var(--light-primary);
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  height: calc(100% - 8px);
+}
+
+h1 {
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  flex: 1;
+}
+
+.card {
+  background-color: #eee;
+  min-width: 200px;
+  min-height: 200px;
+  padding: 16px;
+  margin: 16px;
+  border-radius: 4px;
+  box-shadow: 0 0 3px var(--dark-primary);
+}
+
+.card-container {
+  display: flex;
+  flex-direction: row;
+
+  max-width: 760px;
+}
+
+.login-card input.text {
+  width: 60%;
+}
+
+button {
+  padding: 8px;
+  background-color: white;
+  border: 1px solid var(--medium-primary);
+  border-radius: 4px;
+}
+
+button:hover {
+  color: var(--light-primary);
+  background-color: var(--medium-primary);
+  cursor: pointer;
+}
+
+input[name="clientId"],
+input[name="secret"] {
+  padding: 4px;
+  border: 1px solid gray;
+  border-radius: 4px;
+}

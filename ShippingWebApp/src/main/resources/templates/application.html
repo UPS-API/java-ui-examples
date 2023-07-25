@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>UPS API Shipping Demo</title>
+  <link href="css/colors.css" rel="stylesheet" />
+  <link href="css/application.css" rel="stylesheet" />
+  <script src="js/application.js"></script>
+</head>
+
+<body>
+  <main>
+    <div class="modal_container hidden">
+      <div id="modal" class="modal">
+        <div class="modal_card">
+          <div class="modal_close" onClick="dismissModal()">&times;</div>
+          <div class="modal_content">
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="app_container">
+      <div id="progress">
+        <div id="progress-bar"></div>
+        <ul id="progress-step-container">
+          <li class="progress-step active">1<span class="step-text">Shipper</span></li>
+          <li class="progress-step">2<span class="step-text">Recipient</span></li>
+          <li class="progress-step">3<span class="step-text">Package</span></li>
+          <li class="progress-step">4<span class="step-text">Service</span></li>
+          <li class="progress-step">5<span class="step-text">Review</span></li>
+          <li class="progress-step">6<span class="step-text confirmation">Confirmation</span></li>
+        </ul>
+      </div>
+
+      <div class="app">
+        <div id="step_1" class="step active">
+          <h1>Where are you shipping from?</h1>
+          
+          <div class="info_container">
+            <h3>Shipper</h3>
+            <div class="dap-form_input">
+              <label for="shipper_name">Name*</label>
+              <input id="shipper_name" type="text" />
+            </div>
+            <div class="shipper_email_phone_container">
+              <div class="dap-form_input">
+                <label for="shipper_email">Email</label>
+                <input id="shipper_email" type="text" />
+              </div>
+              <div class="dap-form_input">
+                <label for="shipper_phone">Phone Number</label>
+                <input id="shipper_phone" type="text" />
+              </div>
+            </div>
+            <div class="dap-form_input">
+              <label for="payment_number">Shipper/Account Number*</label>
+              <input id="payment_number" type="text" />
+            </div>
+          </div>
+          <div class="address_container">
+            <h3>Address</h3>
+            <div class="dap-form_input">
+              <label for="shipper_addressLine1">Address Line 1*</label>
+              <input id="shipper_addressLine1" type="text" />
+            </div>
+            <div class="dap-form_input">
+              <label for="shipper_addressLine2">Address Line 2</label>
+              <input id="shipper_addressLine2" type="text" />
+            </div>
+            <div class="shipper_city_state_container">
+              <div class="dap-form_input">
+                <label for="shipper_city">City*</label>
+                <input id="shipper_city" type="text" />
+              </div>
+              <div class="dap-form_input">
+                <label for="shipper_state">State*</label>
+                <input id="shipper_state" type="text" />
+              </div>
+            </div>
+            <div class="shipper_postal_country_container">
+              <div class="dap-form_input">
+                <label for="shipper_postalCode">Postal Code*</label>
+                <input id="shipper_postalCode" type="text" />
+              </div>
+              <div class="dap-form_input">
+                <label for="shipper_countryCode">Country</label>
+                <input id="shipper_countryCode" type="text" value="US" disabled />
+              </div>
+            </div>
+            <hr />
+            <div class="shipper_ctas">
+              <input type="button" value="Next Step" class="next-btn" onClick="continueFromShipper()" />
+            </div>
+          </div>
+        </div>
+        <div id="step_2" class="step">
+          <h1>Where are you shipping to?</h1>
+  
+          <div class="info_container">
+            <h3>Recipient</h3>
+            <div class="dap-form_input">
+              <label for="shipTo_name">Name*</label>
+              <input id="shipTo_name" type="text" />
+            </div>
+            <div class="shipTo_email_phone_container">
+              <div class="dap-form_input">
+                <label for="shipTo_email">Email</label>
+                <input id="shipTo_email" type="text" />
+              </div>
+              <div class="dap-form_input">
+                <label for="shipTo_phone">Phone Number</label>
+                <input id="shipTo_phone" type="text" />
+              </div>
+            </div>
+          </div>
+          <div class="address_container">
+            <h3>Address</h3>
+            <div class="dap-form_input">
+              <label for="shipTo_addressLine1">Address Line 1*</label>
+              <input id="shipTo_addressLine1" type="text" />
+            </div>
+            <div class="dap-form_input">
+              <label for="shipTo_addressLine2">Address Line 2</label>
+              <input id="shipTo_addressLine2" type="text" />
+            </div>
+            <div class="shipTo_city_state_container">
+              <div class="dap-form_input">
+                <label for="shipTo_city">City*</label>
+                <input id="shipTo_city" type="text" />
+              </div>
+              <div class="dap-form_input">
+                <label for="shipTo_state">State*</label>
+                <input id="shipTo_state" type="text" />
+              </div>
+            </div>
+            <div class="shipTo_postal_country_container">
+              <div class="dap-form_input">
+                <label for="shipTo_postalCode">Postal Code*</label>
+                <input id="shipTo_postalCode" type="text" />
+              </div>
+              <div class="dap-form_input">
+                <label for="shipTo_countryCode">Country</label>
+                <input id="shipTo_countryCode" type="text" value="US" disabled />
+              </div>
+            </div>
+          </div>
+          <div>
+            <input id="shipTo_residential" type="checkbox" />
+            <label for="shipTo_residential">This is a Residential Address</label>
+          </div>
+          <hr />
+          <div class="shipTo_ctas">
+            <input type="button" value="Previous Step" class="prev-btn" onClick="activateStep(1)" />
+            <input type="button" value="Next Step" class="next-btn" onClick="continueFromShipTo()" />
+          </div>
+        </div>
+        <div id="step_3" class="step">
+          <h1>What are you shipping?</h1>
+          <x-package data-index="1">
+            <h2>Package 1</h2>
+            <div class="dap-form_input">
+              <label for="shipment_description_1">Package Description*</label>
+              <textarea id="shipment_description_1" rows="4"></textarea>
+            </div>
+            <div class="dap-form_input">
+              <label for="shipment_weight_1">Shipment Weight*</label>
+              <div>
+                <input id="shipment_weight_1" type="number" />
+                <label for="shipment_weight_1">Lbs</label>
+              </div>
+            </div>
+            <div>
+              <h3>Package Dimensions</h3>
+              <div>
+                <div class="dap-form_input package-form_dim_input">
+                  <label for="shipment_length_1">Length*</label>
+                  <div>
+                    <input id="shipment_length_1" type="number" />
+                    <label for="shipment_length_1">in</label>
+                  </div>
+                </div>
+                <div class="dap-form_input package-form_dim_input">
+                  <label for="shipment_width_1">Width*</label>
+                  <div>
+                    <input id="shipment_width_1" type="number" />
+                    <label for="shipment_width_1">in</label>
+                  </div>
+                </div>
+                <div class="dap-form_input package-form_dim_input">
+                  <label for="shipment_height_1">Height*</label>
+                  <div>
+                    <input id="shipment_height_1" type="number" />
+                    <label for="shipment_height_1">in</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <h3>Package Declared Value (Package Value)</h3>
+    
+              <div class="dap-form_input">
+                <label for="shipment_dv_1">UPS's liability for loss or damage is limited to US$100 without a declaration of value (limit may vary for non-U.S. origin shipments). To increase UPS’s liability, you must declare a higher value and pay an additional charge.</label>
+                <input id="shipment_dv_1" type="number" />USD
+              </div>
+            </div>
+            <div>
+              <h3>Reference Numbers</h3>
+    
+              <div class="dap-form_input">
+                <label for="shipment_ref1_1">Reference Number 1</label>
+                <input id="shipment_ref1_1" type="text" />
+              </div><div class="dap-form_input">
+                <label for="shipment_ref2_1">Reference Number 2</label>
+                <input id="shipment_ref2_1" type="text" />
+              </div>
+            </div>
+          </x-package>
+          <hr />
+          <div>
+            <input type="button" value="Add New Package" class="next-btn" onClick="addNewPackage()" />
+            <input type="button" value="Remove Last Package" class="remove-btn" onClick="removeLastPackage()" />
+          </div>
+          <hr />
+          <div class="package_ctas">
+            <input type="button" value="Previous Step" class="prev-btn" onClick="activateStep(2)" />
+            <input type="button" value="Next Step" class="next-btn" onClick="continueFromPackage()" />
+          </div>
+        </div>
+        <div id="step_4" class="step">
+          <h1>Select a Shipping Service</h1>
+  
+          <div id="shipping_services"></div>
+          <hr />
+          <div class="service_ctas">
+            <input type="button" value="Previous Step" class="prev-btn" onClick="activateStep(3)" />
+            <input type="button" value="Next Step" class="next-btn" onClick="continueFromService()" />
+          </div>
+        </div>
+        <div id="step_5" class="step">
+          <h1>Review</h1>
+
+          <div id="review_container">
+            <div id="review_addresses">
+              <div id="review_shipper"></div>
+              <div id="review_shipTo"></div>
+            </div>
+            <div id="review_account_number"></div>
+            <div id="review_services"></div>
+            <div id="review_packages"></div>
+          </div>
+          <hr />
+          <div class="review_ctas">
+            <input type="button" value="Previous Step" class="prev-btn" onClick="activateStep(4)" />
+            <input type="button" value="Next Step" class="next-btn" onClick="makeShipment()" />
+          </div>
+        </div>
+        <div id="step_6" class="step">
+          <h1>Confirmation and Details</h1>
+          <h3>Tracking Number</h3>
+          <div id="confirm_trackingNum"></div>
+          <div>
+            <span>Total Cost: </span><span id="confirm_price"></span>
+          </div>
+          <div id="confirmation_constituents"></div>
+          <div id="confirmation_billing"></div>
+          <div id="confirmation_services"></div>
+          <div id="confirmation_packages"></div>
+          <hr />
+          <div class="confirmation_ctas">
+            <input type="button" value="Make New Shipment" class="next-btn" onClick="activateStep(1)" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="logout">
+      <form id="logoutForm" th:action="@{/logout}" method="POST">
+        <button type="button" onclick="logout()" class="prev-btn">Log Out</button>
+      </form>
+    </div>
+  </main>
+</body>
+
+</html>

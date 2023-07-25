@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>UPS API Shipping Demo</title>
+  <link href="css/colors.css" rel="stylesheet" />
+  <link href="css/index.css" rel="stylesheet" />
+</head>
+
+<body>
+  <main>
+    <h1>Demo End-to-end Shipping Application</h1>
+    <div class="card login-card">
+      <h3>Login with Client ID and Secret ID</h3>
+      <form action="/validateUser" method="post">
+        <span>Client Id</span>
+        <input type="text" class="text" name="clientId" required>
+        <br><br>
+        <span>Secret Id</span>
+        <input type="password" class="text" name="secret" required>
+        <br><br>
+        <input name="keepSignIn" type="hidden" value="notselected">
+        <input type="checkbox" name="keepSignIn" id="checkbox-1-1" class="custom-checkbox" value="selected" />
+        <label for="checkbox-1-1">Keep me Signed in</label>
+        <br><br>
+        <button type="submit" class="signin">
+          Sign In
+        </button>
+      </form>
+    </div>
+    <div class="card-container">
+      <div class="card">
+        <h3>About This Demo</h3>
+        <p>
+          This application is a demo of a suggested flow for using UPS APIs. In this applicaiton we do a simple shipment.
+          The APIs used are the OAuth, Address Validation, Rate, and Shipment APIs. They are also called in this order.
+          The main points to note are the API calls are made on the Java side, and the frontend simply creates the JSON request, and displays the response JSON.
+        </p>
+      </div>
+      <div class="card">
+        <h3>Business Rules</h3>
+        <p>
+          Click the following link to read more about the APIs and their business rules used in this demo.
+        </p>
+        <a href="https://developer.ups.com/en-us/catalog">API Business Rules</a>
+      </div>
+    </div>
+  </main>
+</body>
+
+</html>
