@@ -10,7 +10,7 @@ This shipping application is a sample demo to showcase creating a U.S. domestic 
 - You can either download a local copy or clone the repository:
 
 ```sh
-git clone https://github.com/UPS-API/java-api-examples.git
+git clone https://github.com/UPS-API/java-ui-examples.git
 ```
 
 
