@@ -27,7 +27,7 @@ The app is built with Apache Maven 3.9.5, Spring Boot 2.7.9, and Java version 11
 - You can either download a local copy or clone the repository:
 
 ```
-git clone <URL_HERE>
+git clone https://github.com/UPS-API/java-ui-examples.git
 ```
 
 ## Build and Run
