@@ -27,17 +27,19 @@ The app is built with Apache Maven 3.9.5, Spring Boot 2.7.9, and Java version 11
 - You can either download a local copy or clone the repository:
 
 ```
-git clone <URL_HERE>
+git clone https://github.com/UPS-API/java-ui-examples.git
 ```
 
 ## Build and Run
 
-- Update `server.port` in `src/main/application.properties` to match the port number of your Callback URL. This is set to 5001 by default.
+- Update `server.port` in `src/main/resources/application.properties` to match the port number of your Callback URL. This is set to 5001 by default.
 
-- From the root directory, build the project with Maven and run the generated JAR file:
+- From the OAuth_AuthCode_DesktopApp directory, build the project with Maven and run the generated JAR file:
 
 ```
 mvn clean install
+```
+```
 java -jar target/oauthdemo-0.0.1.jar
 ```
 
@@ -48,6 +50,8 @@ mvn spring-boot:run
 ```
 
 Once the server boots, the GUI will open as a window on your desktop.
+
+![Application GUI](src/main/resources/img/gui.png)
 
 ## More information
 
