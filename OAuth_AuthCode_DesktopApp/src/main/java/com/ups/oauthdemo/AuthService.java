@@ -86,8 +86,7 @@ public class AuthService {
 		ResponseEntity<String> response = restTemplate.postForEntity(uri, formEntity, String.class);
 		JSONObject resp = new JSONObject(response.getBody());
 		
-		authModel.setToken(resp.getString("access_token"));
-		authModel.setRefreshToken(resp.getString("refresh_token"));
+		authModel.updateTokenData(resp);
 		
 		return resp;
 	}
@@ -122,9 +121,8 @@ public class AuthService {
 			
 		ResponseEntity<String> response = restTemplate.postForEntity(uri, formEntity, String.class);
 		JSONObject resp = new JSONObject(response.getBody());
-		authModel.setToken(resp.getString("access_token"));
-		authModel.setRefreshToken(resp.getString("refresh_token"));
+		authModel.updateTokenData(resp);
 
-		return resp;		
+		return resp;
 	}
 }

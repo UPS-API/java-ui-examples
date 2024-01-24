@@ -1,5 +1,7 @@
 package com.ups.oauthdemo;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
@@ -91,4 +93,9 @@ public class AuthModel {
 		return StringUtils.hasText(clientSecret);
 	}
 	
+	
+	public void updateTokenData(JSONObject resp) throws JSONException {
+		setToken(resp.getString("access_token"));
+		setRefreshToken(resp.getString("refresh_token"));
+	}
 }

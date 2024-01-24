@@ -5,8 +5,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import java.awt.event.ActionEvent;
@@ -14,7 +16,6 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
-import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 
 import java.awt.BorderLayout;
@@ -30,7 +31,9 @@ import org.springframework.web.client.RestClientException;
 import com.ups.oauthdemo.AuthModel;
 import com.ups.oauthdemo.AuthService;
 import com.ups.oauthdemo.view.components.StyledButton;
+import com.ups.oauthdemo.view.components.StyledPasswordField;
 import com.ups.oauthdemo.view.components.StyledTextArea;
+import com.ups.oauthdemo.view.components.StyledTextField;
 
 @Component
 public class GUI extends JFrame {
@@ -39,8 +42,8 @@ public class GUI extends JFrame {
 	private JTextArea tokenText;
 	private JTextArea refreshText;
 	private JTextArea statusText;
-	private JTextArea idText;
-	private JTextArea secretText;
+	private JTextField idText;
+	private JPasswordField secretText;
 	
 	private JButton codeButton;
 	private JButton tokenButton;
@@ -89,14 +92,14 @@ public class GUI extends JFrame {
 		//Client ID text field
 		JLabel idLabel = new JLabel("Client ID");
 		idLabel.setFont(new Font(Font.DIALOG, Font.BOLD, 20));
-		idText = new StyledTextArea();
+		idText = new StyledTextField();
 		JScrollPane idScrollPane = new JScrollPane(idText);
 		idScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		
 		//Client Secret text field
 		JLabel secretLabel = new JLabel("Client Secret");
 		secretLabel.setFont(new Font(Font.DIALOG, Font.BOLD, 20));
-		secretText = new StyledTextArea();
+		secretText = new StyledPasswordField();
 		JScrollPane secretScrollPane = new JScrollPane(secretText);
 		secretScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		

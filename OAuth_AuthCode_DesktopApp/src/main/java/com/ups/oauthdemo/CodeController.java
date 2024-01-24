@@ -21,7 +21,7 @@ public class CodeController {
 	 * Extract authorization code from the request parameters and updates AuthModel
 	 */
 	@GetMapping("/")
-	public String getCode(@RequestParam("code") String code, AuthModel model) {
+	public String getCode(@RequestParam("code") String code) {
 		gui.updateStatus(3);
 		authModel.setCode(code);
 		gui.updateView(authModel);
